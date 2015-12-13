@@ -1,6 +1,7 @@
 <h1><%= @list.name %>
 <% if @list.creator?(current_user) %>
 <%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_list_path(@list), class: 'btn btn-info pull-right' %>
+<%= link_to '<i class="fa fa-trash"></i> Delete'.html_safe, @list, method: :delete, class: 'btn btn-danger pull-right space-right' %>
 <% end %>
 </h1>
 
@@ -17,8 +18,8 @@
   <% end %>
 </ul>
 
-<p><strong>Items:</strong></p>
-<ul class="list-hrs">
+<h2>Items</h2>
+<ul class="list-hrs space-above">
   <% @list.visible_items(current_user).each do |it| %>
   <li>
     <%= it.name %>: <%= it.description %>

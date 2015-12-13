@@ -1,11 +1,13 @@
 <h1>Your Groups
 
-  <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New Group</a>
+  <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New Group <i class="fa fa-users"></i></a>
 </h1>
 
 <ul>
-  <% @groups.each do |g| %>
+  <% if @groups.each do |g| %>
     <li><%= link_to g.name, group_path(g) %></li>
+  <% end.empty? %>
+    <p>You do not belong to any groups yet.</p>
   <% end %>
 </ul>
 

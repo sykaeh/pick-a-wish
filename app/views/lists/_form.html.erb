@@ -19,31 +19,29 @@
     <% if current_user.groups.each do |g| %>
       <div class="checkbox">
         <label>
-          <input type="checkbox" name="groups[]" value="<%= g.id %>">
+          <input type="checkbox" name="groups[]" <% if @list.groups.include?(g) %>checked<% end %> value="<%= g.id %>">
           <%= g.name %>
         </label>
       </div>
     <% end.empty? %>
     <p>No groups available. Please create a <%= link_to 'new group', new_group_path %> first.</p>
     <% end %>
-
   </div>
 
 
-  <label class="control-label">Items:</label>
+  <h2>Items</h2>
 
-  <ul class="list-hrs">
+  <ul class="list-hrs space-above">
     <%= f.nested_fields_for :items do |items_form| %>
       <li>
         <%= items_form.text_field :name, label: 'Item' %>
         <%= items_form.text_field :description, label: 'Item Description' %>
+        <%= items_form.remove_nested_fields_link '<i class="fa fa-trash"></i> Remove'.html_safe, class: 'btn btn-danger' %>
       </li>
     <% end %>
   </ul>
 
   <%= f.add_nested_fields_link :items, '<i class="fa fa-plus"></i> Add new item'.html_safe, class: 'btn btn-info space-below' %>
-
-
   <%= f.submit nil, class: 'btn btn-block btn-success' %>
 
 <% end %>
