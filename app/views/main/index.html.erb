@@ -1,6 +1,18 @@
+<% if !@pending_invitations.empty? %>
+  <h1>Pending Group Invitations</h1>
 
+<ul class="space-above list-hrs">
+  <% @pending_invitations.each do |invite| %>
+    <li>
+      <%= link_to invite.group.name, group_path(invite.group) %>
+      <%= link_to 'Accept', member_accept_path(invite), class: 'btn btn-success btn-sm pull-right' %>
+      <%= link_to 'Reject', member_reject_path(invite), class: 'btn btn-danger btn-sm pull-right' %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
 
-<h1><i class="fa fa-users"></i> Your Groups
+<h1>Your Groups
 
   <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New Group</a>
 </h1>
@@ -11,14 +23,21 @@
   <% end %>
 </ul>
 
-
-
-<h1><i class="fa fa-list"></i> Your Lists
+<h1>Your Lists
   <a href="<%= new_list_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New List</a>
 </h1>
 
 <ul>
-  <% @lists.each do |l| %>
+  <% @own_lists.each do |l| %>
+    <li><%= link_to l.name, list_path(l) %></li>
+  <% end %>
+</ul>
+
+
+<h1>Your friend's and family's wish lists</h1>
+
+<ul>
+  <% @other_lists.each do |l| %>
     <li><%= link_to l.name, list_path(l) %></li>
   <% end %>
 </ul>

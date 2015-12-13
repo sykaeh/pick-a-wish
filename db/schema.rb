@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213010201) do
+ActiveRecord::Schema.define(version: 20151213170712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "public"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "public",     default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "groups_lists", id: false, force: :cascade do |t|
@@ -36,9 +36,10 @@ ActiveRecord::Schema.define(version: 20151213010201) do
     t.string   "description"
     t.integer  "list_id"
     t.datetime "claimed_on"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "claimed_by_id"
+    t.boolean  "bought",        default: false
   end
 
   add_index "items", ["claimed_by_id"], name: "index_items_on_claimed_by_id", using: :btree
@@ -60,14 +61,14 @@ ActiveRecord::Schema.define(version: 20151213010201) do
   add_index "lists_users", ["list_id"], name: "index_lists_users_on_list_id", using: :btree
   add_index "lists_users", ["user_id"], name: "index_lists_users_on_user_id", using: :btree
 
-  create_table "members", id: false, force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "user_id"
     t.string   "email"
     t.datetime "invited"
     t.datetime "accepted"
     t.datetime "declined"
-    t.boolean  "active"
+    t.boolean  "active",   default: false, null: false
   end
 
   add_index "members", ["group_id"], name: "index_members_on_group_id", using: :btree

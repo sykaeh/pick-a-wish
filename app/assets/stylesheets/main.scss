@@ -8,6 +8,8 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@import "lists";
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -19,6 +21,14 @@ body {
 
 .space-below {
   margin-bottom: 10px;
+}
+
+.space-above {
+  margin-top: 20px;
+}
+
+.space-right {
+  margin-right: 5px;
 }
 
 label.required:after {

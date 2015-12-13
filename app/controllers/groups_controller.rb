@@ -5,6 +5,8 @@ class GroupsController < ApplicationController
   # GET /groups.json
   def index
     @groups = current_user.groups
+
+    @public_groups = Group.where(public: true)
   end
 
   # GET /groups/1
@@ -53,6 +55,25 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def accept
+    m = Member.find(params[:id])
+    m.user = current_user
+    m.accepted = DateTime.now
+    m.active = true
+    m.save
+
+    redirect_to :root
+  end
+
+  def reject
+    m = Member.find(params[:id])
+    m.user = current_user
+    m.declined = DateTime.now
+    m.save
+
+    redirect_to :root
   end
 
   # PATCH/PUT /groups/1

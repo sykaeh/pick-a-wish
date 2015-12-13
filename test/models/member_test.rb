@@ -8,7 +8,8 @@
 #  invited  :datetime
 #  accepted :datetime
 #  declined :datetime
-#  active   :boolean
+#  active   :boolean          default(FALSE), not null
+#  id       :integer          not null, primary key
 #
 
 require 'test_helper'
