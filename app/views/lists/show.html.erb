@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @list.name %>
+<% if @list.creator?(current_user) %>
+<%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_list_path(@list), class: 'btn btn-info pull-right' %>
+<% end %>
+</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @list.name %>
-</p>
+<p><strong>Creators: </strong> <%= @list.users.pluck(:email).to_sentence %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @list.description %>
-</p>
+<p><%= @list.description %></p>
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<p><strong>Shared with: </strong></p>
+<ul>
+  <% @list.groups.each do |g| %>
+    <li><%= link_to g.name, group_path(g) %></li>
+  <% end %>
+</ul>
+
+<p><strong>Items:</strong></p>
+<ul>
+  <% @list.visible_items(current_user).each do |it| %>
+  <li><% if not it.claimed_on.nil? %>(CLAIMED BY YOU) <% end %><%= it.name %>: <%= it.description %></li>
+  <% end %>
+</ul>

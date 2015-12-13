@@ -1,8 +1,7 @@
-<%= form_for(@list) do |f| %>
+<%= bootstrap_form_for(@list) do |f| %>
   <% if @list.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <strong><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</strong>
       <ul>
       <% @list.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,15 +10,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <%= f.text_field :name %>
+  <%= f.text_field :description %>
+  <%= f.date_field :date, label: 'Deadline date' %>
+
+  <div class="form-group">
+    <label class="control-label">Share this list with:</label>
+    <% if current_user.groups.each do |g| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="groups[]" value="<%= g.id %>">
+          <%= g.name %>
+        </label>
+      </div>
+    <% end.empty? %>
+    <p>No groups available. Please create a <%= link_to 'new group', new_group_path %> first.</p>
+    <% end %>
+
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+
+  <label class="control-label">Items:</label>
+
+  <ul>
+    <%= f.nested_fields_for :items do |items_form| %>
+      <li>
+        <%= items_form.text_field :name, label: 'Item' %>
+        <%= items_form.text_field :description, label: 'Item Description' %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= f.add_nested_fields_link :items, '<i class="fa fa-plus"></i> Add new item'.html_safe, class: 'btn btn-info space-below' %>
+
+
+  <%= f.submit nil, class: 'btn btn-block btn-success' %>
+
 <% end %>
