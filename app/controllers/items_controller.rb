@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :pick, :release, :bought, :destroy]
 
   # GET /items
   # GET /items.json
@@ -35,6 +35,29 @@ class ItemsController < ApplicationController
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def pick
+    @item.claimed_on = DateTime.now
+    @item.claimed_by = current_user
+    @item.save
+
+    redirect_to @item.list
+  end
+
+  def release
+    @item.claimed_on = nil
+    @item.claimed_by = nil
+    @item.save
+
+    redirect_to :back
+  end
+
+  def bought
+    @item.bought = true
+    @item.save
+
+    redirect_to shopping_path
   end
 
   # PATCH/PUT /items/1

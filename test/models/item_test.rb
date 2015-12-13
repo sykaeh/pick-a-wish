@@ -10,6 +10,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  claimed_by_id :integer
+#  bought        :boolean          default(FALSE)
 #
 
 require 'test_helper'

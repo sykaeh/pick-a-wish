@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1>Your Groups
 
-<h1>Listing Groups</h1>
+  <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New Group</a>
+</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Public</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ul>
+  <% @groups.each do |g| %>
+    <li><%= link_to g.name, group_path(g) %></li>
+  <% end %>
+</ul>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%= group.public %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<h1>Public Groups</h1>
 
-<%= link_to 'New Group', new_group_path %>
+<ul>
+  <% if @public_groups.each do |g| %>
+    <li><%= link_to g.name, group_path(g) %></li>
+  <% end.empty? %>
+  <p>There are no public groups.</p>
+  <% end %>
+</ul>

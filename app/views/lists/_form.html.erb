@@ -32,7 +32,7 @@
 
   <label class="control-label">Items:</label>
 
-  <ul>
+  <ul class="list-hrs">
     <%= f.nested_fields_for :items do |items_form| %>
       <li>
         <%= items_form.text_field :name, label: 'Item' %>

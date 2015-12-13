@@ -1,0 +1,30 @@
+<h1>Shopping List</h1>
+
+<ul class="list-hrs space-above">
+  <% if @items.each do |it| %>
+  <li>
+    <%= link_to "<i class='fa fa-credit-card'></i> Bought".html_safe, bought_path(it), class: 'btn btn-sm btn-success pull-right' %>
+    <%= link_to "Not getting it anymore", release_path(it), class: 'btn btn-sm btn-warning pull-right space-right' %>
+    <%= it.name %>: <%= it.description %><br>
+    <strong>For: </strong><%= it.list.users.pluck(:email).to_sentence %> (<%= link_to it.list.name, list_path(it.list) %>)<br>
+    <strong>Deadline: </strong><%= it.list.date %>
+  </li>
+  <% end.empty? %>
+  <li>You have not picked any wishes yet.</li>
+  <% end %>
+</ul>
+
+
+<h1>Bought Presents</h1>
+
+<ul class="list-hrs space-above">
+  <% if @bought_items.each do |it| %>
+  <li>
+    <%= it.name %>: <%= it.description %><br>
+    <strong>For: </strong><%= it.list.users.pluck(:email).to_sentence %> (<%= link_to it.list.name, list_path(it.list) %>)<br>
+    <strong>Deadline: </strong><%= it.list.date %>
+  </li>
+  <% end.empty? %>
+  <li>You have not bought any presents yet.</li>
+  <% end %>
+</ul>

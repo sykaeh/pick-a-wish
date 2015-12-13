@@ -8,6 +8,15 @@ Rails.application.routes.draw do
   resources :groups
   devise_for :users
 
+  get 'pick/:id' => 'items#pick', as: :pick
+  get 'release/:id' => 'items#release', as: :release
+  get 'bought/:id' => 'items#bought', as: :bought
+
+  get 'shopping' => 'main#shopping_list', as: :shopping
+  get 'wish_lists' => 'main#wish_lists', as: :wish_lists
+
+  get 'member-accept/:id' => 'groups#accept', as: :member_accept
+  get 'member-reject/:id' => 'groups#reject', as: :member_reject
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

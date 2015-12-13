@@ -29,9 +29,10 @@ class List < ActiveRecord::Base
 
   def visible_items(user)
     if self.creator?(user)
-      self.items
+      self.items.order(:id)
     else
-      self.items.where('claimed_by_id = ? or claimed_by_id is NULL', user.id)
+      self.items.where('claimed_by_id = ? or claimed_by_id is NULL', user.id).order(:id)
     end
   end
+
 end
