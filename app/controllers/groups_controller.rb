@@ -26,8 +26,6 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-
-    logger.info params.to_yaml
     @group = Group.new(group_params)
 
     # Add current user to the group
@@ -79,6 +77,28 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+
+    # Add all of the other users
+    params[:users].each do |email|
+      unless email.blank?
+
+        m = Member.where(email: email, group: @group).first
+
+        if m
+          m.invited = DateTime.now
+          m.save
+        else
+          # Todo send e-mails
+          user = User.find_by_email(email)
+          if user.nil?
+            Member.create(email: email, group: @group, invited: DateTime.now)
+          else
+            Member.create(user: user, group: @group, email: email, invited: DateTime.now)
+          end
+        end
+      end
+    end
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
