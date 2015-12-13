@@ -33,7 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass'
+gem 'bootstrap_form'
 gem 'font-awesome-sass'
+
+gem 'date_validator'
+gem 'nested_form_fields'
 
 gem 'devise'
 

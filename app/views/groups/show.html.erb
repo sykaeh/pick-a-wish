@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @group.name %><% if @group.public %> (public)<% end %></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+<h2>Group Members</h2>
 
-<p>
-  <strong>Public:</strong>
-  <%= @group.public %>
-</p>
+<ul>
+  <% @group.members.each do |m| %>
+  <li><%= m.name %> (<%= m.status %>)</li>
+  <% end %>
+</ul>
+
+<h2>Group Lists</h2>
+<ul>
+  <% @group.lists.each do |l| %>
+    <li><%= link_to l.name, list_path(l) %></li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   # GET /groups/1
@@ -24,7 +24,25 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+
+    logger.info params.to_yaml
     @group = Group.new(group_params)
+
+    # Add current user to the group
+    Member.create(user: current_user, group: @group, accepted: DateTime.now, active: true)
+
+    # Add all of the other users
+    params[:users].each do |email|
+      unless email.blank?
+        # Todo send e-mails
+        user = User.find_by_email(email)
+        if user.nil?
+          Member.create(email: email, group: @group, invited: DateTime.now)
+        else
+          Member.create(user: user, group: @group, email: email, invited: DateTime.now)
+        end
+      end
+    end
 
     respond_to do |format|
       if @group.save

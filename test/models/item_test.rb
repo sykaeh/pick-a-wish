@@ -2,13 +2,14 @@
 #
 # Table name: items
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  description :string
-#  list_id     :integer
-#  claimed_on  :datetime
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id            :integer          not null, primary key
+#  name          :string
+#  description   :string
+#  list_id       :integer
+#  claimed_on    :datetime
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  claimed_by_id :integer
 #
 
 require 'test_helper'

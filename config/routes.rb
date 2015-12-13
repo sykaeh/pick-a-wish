@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  resources :items
-  resources :lists
+
+  root to: "main#index"
+
+  resources :lists do
+    resources :items
+  end
   resources :groups
   devise_for :users
 
-  root to: "home#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

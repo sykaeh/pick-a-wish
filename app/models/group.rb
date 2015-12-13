@@ -11,7 +11,10 @@
 
 class Group < ActiveRecord::Base
 
-  has_and_belongs_to_many :users
+  has_many :members
+  has_many :users, through: :members
   has_and_belongs_to_many :lists
-  
+
+  validates :name, presence: true
+
 end

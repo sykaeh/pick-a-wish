@@ -15,6 +15,9 @@ class ListsController < ApplicationController
   # GET /lists/new
   def new
     @list = List.new
+    @list.items.build
+    @list.items.build
+    @list.items.build
   end
 
   # GET /lists/1/edit
@@ -24,7 +27,11 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
+    logger.info params.to_yaml
+
     @list = List.new(list_params)
+    @list.groups << Group.find(params[:groups])
+    @list.users << current_user
 
     respond_to do |format|
       if @list.save
@@ -69,6 +76,6 @@ class ListsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
-      params.require(:list).permit(:name, :description)
+      params.require(:list).permit(:name, :description, :date, items_attributes: [:id, :name, :description, :_destroy])
     end
 end
