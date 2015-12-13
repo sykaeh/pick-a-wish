@@ -1,6 +1,8 @@
-<h1>Editing Group</h1>
+<h1>Editing Group
+
+<%= link_to '<i class="fa fa-eye"></i> Show'.html_safe, @group, class: 'btn btn-success pull-right' %>
+<%= link_to '<i class="fa fa-sign-out"></i> Leave'.html_safe, leave_group_path(@group), class: 'btn btn-danger pull-right space-right' %>
+
+</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>

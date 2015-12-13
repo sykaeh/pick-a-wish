@@ -13,8 +13,9 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<%= groups_path %>"><i class="fa fa-users"></i> Groups</a></li>
-        <li><a href="<%= wish_lists_path %>"><i class="fa fa-gift"></i> Wish Lists</a></li>
+        <li><a href="<%= lists_path %>"><i class="fa fa-gift"></i> Wish Lists</a></li>
         <li><a href="<%= shopping_path %>"><i class="fa fa-shopping-cart"></i> Shopping List</a></li>
+        <li><%= link_to '<i class="fa fa-sign-out"></i> Logout'.html_safe, destroy_user_session_path, method: :delete  %></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->

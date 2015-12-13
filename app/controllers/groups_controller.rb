@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :edit, :update, :leave, :destroy]
 
   # GET /groups
   # GET /groups.json
@@ -88,6 +88,15 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def leave
+    @group.users.destroy(current_user)
+    if @group.users.empty?
+      @group.destroy
+    end
+
+    redirect_to :root
   end
 
   # DELETE /groups/1

@@ -1,8 +1,7 @@
 <%= bootstrap_form_for(@group) do |f| %>
   <% if @group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <strong><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</strong>
       <ul>
       <% @group.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -15,8 +14,17 @@
   <%= f.text_field :name %>
   <%= f.check_box :public %>
 
+  <label class="control-label">Existing members</label>
+  <ul>
+    <% if @group.members.each do |m| %>
+      <li><%= m.name %> (<%= m.status %>)</li>
+    <% end.empty? %>
+      <p>No existing members. </p>
+    <% end %>
+  </ul>
+
   <div class="form-group">
-  <label class="control-label">Users:</label>
+    <label class="control-label">Invite new users</label>
     <p class="help-block">Add the e-mail address of all of the users that should be
       included in this group. They will then receive an invitation to the group.</p>
     <input type="text" class="form-control space-below" placeholder="E-mail" name="users[]"></input>
@@ -24,7 +32,18 @@
     <input type="text" class="form-control space-below" placeholder="E-mail" name="users[]"></input>
     <input type="text" class="form-control space-below" placeholder="E-mail" name="users[]"></input>
     <input type="text" class="form-control space-below" placeholder="E-mail" name="users[]"></input>
+    <button id="more-email-fields" class="btn btn-info"><i class="fa fa-plus"></i> Add more fields</button>
   </div>
 
-  <%= f.submit %>
+  <%= f.submit nil, class: 'btn btn-block btn-success' %>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $('#more-email-fields').click(function(ev) {
+      ev.preventDefault();
+      text = '<input type="text" class="form-control space-below" placeholder="E-mail" name="users[]"></input>';
+      $(this).before(new Array(6).join(text));
+    });
+  });
+</script>

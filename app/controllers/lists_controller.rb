@@ -4,7 +4,14 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @own_lists = current_user.lists
+    groups = current_user.groups
+
+    group_lists = []
+    groups.each do |g|
+      (group_lists << g.lists).flatten!
+    end
+    @other_lists = group_lists - @own_lists
   end
 
   # GET /lists/1
@@ -30,7 +37,10 @@ class ListsController < ApplicationController
     logger.info params.to_yaml
 
     @list = List.new(list_params)
-    @list.groups << Group.find(params[:groups])
+
+    if params[:groups]
+      @list.groups << Group.find(params[:groups])
+    end
     @list.users << current_user
 
     respond_to do |format|
@@ -38,6 +48,9 @@ class ListsController < ApplicationController
         format.html { redirect_to @list, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
       else
+        @list.items.build
+        @list.items.build
+        @list.items.build
         format.html { render :new }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
@@ -63,7 +76,7 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
+      format.html { redirect_to :root, notice: 'List was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
