@@ -39,7 +39,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     if params[:groups]
-      @list.groups << Group.find(params[:groups])
+      @list.groups = Group.find(params[:groups])
     end
     @list.users << current_user
 
@@ -60,6 +60,11 @@ class ListsController < ApplicationController
   # PATCH/PUT /lists/1
   # PATCH/PUT /lists/1.json
   def update
+
+    if params[:groups]
+      @list.groups = Group.find(params[:groups])
+    end
+
     respond_to do |format|
       if @list.update(list_params)
         format.html { redirect_to @list, notice: 'List was successfully updated.' }
