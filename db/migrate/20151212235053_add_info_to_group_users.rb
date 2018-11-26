@@ -1,4 +1,4 @@
-class AddInfoToGroupUsers < ActiveRecord::Migration
+class AddInfoToGroupUsers < ActiveRecord::Migration[4.2]
   def change
     add_column :members, :email, :string
     add_column :members, :invited, :timestamp
