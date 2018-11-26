@@ -1,4 +1,4 @@
-class JoinTables < ActiveRecord::Migration
+class JoinTables < ActiveRecord::Migration[4.2]
   def change
     create_table :members, id: false do |t|
       t.integer :group_id
