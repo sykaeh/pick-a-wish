@@ -16,7 +16,7 @@
 class Item < ActiveRecord::Base
   belongs_to :list
 
-  belongs_to :claimed_by, class_name: "User"
+  belongs_to :claimed_by, class_name: "User", optional: true
 
   validates :name, presence: true
 
