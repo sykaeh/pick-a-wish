@@ -1,8 +1,8 @@
 <h2>Resend unlock instructions</h2>
 
 <%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-    <%= f.email_field :email, autofocus: true %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     <%= f.submit "Resend unlock instructions" %>
 <% end %>
 
