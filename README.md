@@ -22,7 +22,7 @@ Once the server is running, Pick-A-Wish can be accessed at [http://localhost:300
 
 
 ## License
-Copyright (c) 2015 [Sybil Ehrensberger](http://sybil-ehrensberger.com). See the LICENSE file for license rights and limitations (MIT).
+Copyright (c) 2015 - 2019 [Sybil Ehrensberger](https://sybil-ehrensberger.com). See the LICENSE file for license rights and limitations (MIT).
 
 ## Testing
 There are no tests yet.
