@@ -37,6 +37,8 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'font-awesome-sass'
 
+gem 'webpacker'
+
 gem 'date_validator'
 gem 'nested_form_fields'
 
