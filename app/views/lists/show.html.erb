@@ -1,7 +1,7 @@
 <h1><%= @list.name %>
 <% if @list.creator?(current_user) %>
-<%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_list_path(@list), class: 'btn btn-info pull-right' %>
-<%= link_to '<i class="fa fa-trash"></i> Delete'.html_safe, @list, method: :delete, class: 'btn btn-danger pull-right space-right' %>
+<%= link_to '<i class="fa fa-pencil-alt"></i> Edit'.html_safe, edit_list_path(@list), class: 'btn btn-info pull-right' %>
+<%= link_to '<i class="fa fa-trash-alt"></i> Delete'.html_safe, @list, method: :delete, class: 'btn btn-danger pull-right space-right' %>
 <% end %>
 </h1>
 

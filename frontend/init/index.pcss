@@ -1,0 +1,44 @@
+@import "normalize.css/normalize.css";
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+@import "./scaffolds.pcss";
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.space-below {
+  margin-bottom: 10px;
+}
+
+.space-above {
+  margin-top: 20px;
+}
+
+.space-right {
+  margin-right: 5px;
+}
+
+label.required::after {
+  content: " *";
+}
+
+/* Lists */
+.list-hrs {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.list-hrs li {
+  display: block;
+  padding: 10px 0;
+  min-height: 50px;
+  margin-bottom: -1px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}

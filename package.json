@@ -1,8 +1,41 @@
 {
+  "name": "pick_a_wish",
+  "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.1.1"
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.2.1",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "normalize.css": "^8.0.1",
+    "popper.js": "^1.16.1",
+    "turbolinks": "^5.2.0"
   },
+  "version": "0.1.0",
   "devDependencies": {
+    "@arkweid/lefthook": "^0.7.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-webpack": "^0.12.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1",
+    "postcss-nested": "^4.2.3",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-prettier": "^1.1.2",
+    "webpack": "^4.44.1",
     "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "chokidar": "^3.4.0"
   }
 }

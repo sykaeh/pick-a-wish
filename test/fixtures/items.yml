@@ -18,13 +18,13 @@
 one:
   name: MyString
   description: MyString
-  list_id: 
+  list_id:
   claimed_on: 2015-12-12 22:31:25
-  claimed_by_id: 
+  claimed_by_id:
 
 two:
   name: MyString
   description: MyString
-  list_id: 
+  list_id:
   claimed_on: 2015-12-12 22:31:25
-  claimed_by_id: 
+  claimed_by_id:
