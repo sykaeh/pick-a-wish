@@ -14,6 +14,7 @@ import "@fortawesome/fontawesome-free/js/all";
 // const imagePath = (name) => images(name, true)
 
 import "init";
+import "./nested_form_fields";
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
