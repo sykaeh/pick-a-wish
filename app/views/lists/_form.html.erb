@@ -28,16 +28,8 @@
     <% end %>
   </div>
 
+  <%= c("wish-list-items_edit", f: f) %>
 
-  <h2>Items</h2>
-
-  <ul class="list-hrs space-above">
-    <%= f.nested_fields_for :items do |items_form| %>
-      <%= c("wish-list-item_edit", items_form: items_form) %>
-    <% end %>
-  </ul>
-
-  <%= f.add_nested_fields_link :items, '<i class="fa fa-plus"></i> Add new item'.html_safe, class: 'btn btn-info space-below' %>
   <%= f.submit nil, class: 'btn btn-block btn-success' %>
 
 <% end %>

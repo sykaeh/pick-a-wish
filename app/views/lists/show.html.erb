@@ -18,9 +18,5 @@
   <% end %>
 </ul>
 
-<h2>Items</h2>
-<ul class="list-hrs space-above">
-  <% @list.visible_items(current_user).each do |it| %>
-    <%= c("wish-list-item", item: it) %>
-  <% end %>
-</ul>
+
+<%= c("wish-list-items", items: @list.visible_items(current_user)) %>

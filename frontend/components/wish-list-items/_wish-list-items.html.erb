@@ -1,0 +1,13 @@
+<h2>Items</h2>
+<ul class="list-hrs space-above">
+  <% items.each do |item| %>
+    <li>
+      <% if item.can_pick(current_user) %>
+        <a class="btn btn-sm btn-success pull-right" href="<%= pick_path(item) %>">Pick</a>
+      <% elsif item.can_release(current_user) %>
+        <a class="btn btn-sm btn-warning pull-right" href="<%= release_path(item) %>">Release</a>
+      <% end %>
+      <b><%= item.name %></b><% if not item.description.empty? %>:<br><span class="anchorme"><%= item.description %></span><% end %>
+    </li>
+  <% end %>
+</ul>

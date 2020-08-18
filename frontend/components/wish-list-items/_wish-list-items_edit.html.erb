@@ -1,0 +1,13 @@
+<h2>Items</h2>
+
+<ul class="list-hrs space-above">
+  <%= f.nested_fields_for :items do |items_form| %>
+    <li>
+      <%= items_form.text_field :name, label: 'Item' %>
+      <%= items_form.text_area :description, label: 'Item Description', rows: 3 %>
+      <%= items_form.remove_nested_fields_link '<i class="fa fa-trash"></i> Remove'.html_safe, class: 'btn btn-danger' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= f.add_nested_fields_link :items, '<i class="fa fa-plus"></i> Add new item'.html_safe, class: 'btn btn-info space-below' %>

@@ -15,7 +15,7 @@ import "./nested_form_fields";
 // const imagePath = (name) => images(name, true)
 
 import "init";
-import "components/wish-list-item/wish-list-item";
+import "components/wish-list-items/wish-list-items";
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
