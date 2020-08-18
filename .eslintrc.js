@@ -1,5 +1,9 @@
 module.exports = {
-  extends: ["eslint-config-airbnb-base", "plugin:prettier/recommended"],
+  extends: [
+    "eslint-config-airbnb-base",
+    "plugin:prettier/recommended",
+    "./.eslintrc.custom.js",
+  ],
 
   env: {
     browser: true,
