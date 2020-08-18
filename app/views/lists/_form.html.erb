@@ -33,11 +33,7 @@
 
   <ul class="list-hrs space-above">
     <%= f.nested_fields_for :items do |items_form| %>
-      <li>
-        <%= items_form.text_field :name, label: 'Item' %>
-        <%= items_form.text_field :description, label: 'Item Description' %>
-        <%= items_form.remove_nested_fields_link '<i class="fa fa-trash"></i> Remove'.html_safe, class: 'btn btn-danger' %>
-      </li>
+      <%= c("wish-list-item_edit", items_form: items_form) %>
     <% end %>
   </ul>
 

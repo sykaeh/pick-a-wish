@@ -21,13 +21,6 @@
 <h2>Items</h2>
 <ul class="list-hrs space-above">
   <% @list.visible_items(current_user).each do |it| %>
-  <li>
-    <% if it.can_pick(current_user) %>
-      <a class="btn btn-sm btn-success pull-right" href="<%= pick_path(it) %>">Pick</a>
-    <% elsif it.can_release(current_user) %>
-      <a class="btn btn-sm btn-warning pull-right" href="<%= release_path(it) %>">Release</a>
-    <% end %>
-    <%= it.name %><% if not it.description.empty? %>: <%= it.description %><% end %>
-  </li>
+    <%= c("wish-list-item", item: it) %>
   <% end %>
 </ul>

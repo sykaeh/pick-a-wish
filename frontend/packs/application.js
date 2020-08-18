@@ -5,6 +5,7 @@
 
 import "bootstrap";
 import "@fortawesome/fontawesome-free/js/all";
+import "./nested_form_fields";
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -14,7 +15,7 @@ import "@fortawesome/fontawesome-free/js/all";
 // const imagePath = (name) => images(name, true)
 
 import "init";
-import "./nested_form_fields";
+import "components/wish-list-item/wish-list-item";
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();

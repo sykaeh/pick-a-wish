@@ -1,0 +1,8 @@
+<li>
+  <% if item.can_pick(current_user) %>
+    <a class="btn btn-sm btn-success pull-right" href="<%= pick_path(item) %>">Pick</a>
+  <% elsif item.can_release(current_user) %>
+    <a class="btn btn-sm btn-warning pull-right" href="<%= release_path(item) %>">Release</a>
+  <% end %>
+  <%= item.name %><% if not item.description.empty? %>: <%= item.description %><% end %>
+</li>
