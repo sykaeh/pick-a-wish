@@ -6,8 +6,8 @@
 // Vendors: third-party libraries, etc.
 
 import "bootstrap";
-import "./nested_form_fields";
 import "../vendor/fontawesome";
+import "../vendor/nested_form_fields";
 
 // Own components
 
