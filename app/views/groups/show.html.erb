@@ -1,6 +1,6 @@
 <h1><%= @group.name %><% if @group.public %> (public)<% end %>
-  <%= link_to '<i class="fa fa-pencil-alt"></i> Edit'.html_safe, edit_group_path(@group), class: 'btn btn-info pull-right' %>
-  <%= link_to '<i class="fa fa-sign-out-alt"></i> Leave'.html_safe, leave_group_path(@group), class: 'btn btn-danger pull-right space-right' %>
+  <%= link_to '<i class="fas fa-pencil-alt"></i> Edit'.html_safe, edit_group_path(@group), class: 'btn btn-info pull-right' %>
+  <%= link_to '<i class="fas fa-sign-out-alt"></i> Leave'.html_safe, leave_group_path(@group), class: 'btn btn-danger pull-right space-right' %>
 </h1>
 
 <h2>Group Members</h2>

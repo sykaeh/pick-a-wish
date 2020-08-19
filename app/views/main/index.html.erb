@@ -5,8 +5,8 @@
   <% @pending_invitations.each do |invite| %>
     <li>
       <%= link_to invite.group.name, group_path(invite.group) %>
-      <%= link_to '<i class="fa fa-check"></i> Accept'.html_safe, member_accept_path(invite), class: 'btn btn-success btn-sm pull-right' %>
-      <%= link_to '<i class="fa fa-times"></i> Reject'.html_safe, member_reject_path(invite), class: 'btn btn-danger btn-sm pull-right space-right' %>
+      <%= link_to '<i class="fas fa-check"></i> Accept'.html_safe, member_accept_path(invite), class: 'btn btn-success btn-sm pull-right' %>
+      <%= link_to '<i class="fas fa-times"></i> Reject'.html_safe, member_reject_path(invite), class: 'btn btn-danger btn-sm pull-right space-right' %>
     </li>
   <% end %>
 </ul>
@@ -14,7 +14,7 @@
 
 <h1>Your Groups
 
-  <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New Group <i class="fa fa-users"></i></a>
+  <a href="<%= new_group_path %>" class="btn btn-info pull-right"><i class="fas fa-plus"></i> New Group <i class="fas fa-users"></i></a>
 </h1>
 
 <ul>
@@ -26,7 +26,7 @@
 </ul>
 
 <h1>Your Lists
-  <a href="<%= new_list_path %>" class="btn btn-info pull-right"><i class="fa fa-plus"></i> New List <i class="fa fa-gift"></i></a>
+  <a href="<%= new_list_path %>" class="btn btn-info pull-right"><i class="fas fa-plus"></i> New List <i class="fas fa-gift"></i></a>
 </h1>
 
 <ul>
