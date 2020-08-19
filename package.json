@@ -36,9 +36,13 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-prettier": "^1.1.2",
     "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-dev-server": "^3.11.0"
   },
   "resolutions": {
     "chokidar": "^3.4.0"
+  },
+  "scripts": {
+    "webpack:analyze": "mkdir -p public/packs && node_modules/.bin/webpack --config config/webpack/production.js --profile --json > public/packs/stats.json && node_modules/.bin/webpack-bundle-analyzer public/packs/stats.json"
   }
 }
