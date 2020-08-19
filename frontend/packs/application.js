@@ -5,7 +5,10 @@
 
 // Vendors: third-party libraries, etc.
 
-import "bootstrap";
+import "bootstrap/js/dist/util";
+import "bootstrap/js/dist/button";
+import "bootstrap/js/dist/collapse";
+import "bootstrap/js/dist/dropdown";
 import "../vendor/fontawesome";
 import "../vendor/nested_form_fields";
 
